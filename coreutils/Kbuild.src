@@ -4,6 +4,8 @@
 #
 # Licensed under GPLv2, see file LICENSE in this source tree.
 
+CFLAGS_ls.o := -O2
+
 libs-y			+= libcoreutils/
 
 lib-y:=
