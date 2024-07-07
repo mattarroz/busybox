@@ -9120,7 +9120,9 @@ static int checkjobs(struct pipe *fg_pipe, pid_t waitfor_pid)
 		int i;
 		i = G.count_SIGCHLD;
 #endif
+                printf("vor waitpid\n");
 		childpid = waitpid(-1, &status, attributes);
+                printf("nach waitpid\n");
 		if (childpid <= 0) {
 			if (childpid && errno != ECHILD)
 				bb_simple_perror_msg("waitpid");

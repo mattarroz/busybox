@@ -28,6 +28,5 @@ int FAST_FUNC bb_cat(char **argv)
 		}
 		retval = EXIT_FAILURE;
 	} while (*++argv);
-
 	return retval;
 }
