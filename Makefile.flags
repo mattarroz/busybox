@@ -14,7 +14,6 @@ CPPFLAGS += \
 	$(if $(KBUILD_SRC),-Iinclude2 -I$(srctree)/include -I$(srctree)/libbb) \
 	-include include/autoconf.h \
 	-D_GNU_SOURCE -DNDEBUG \
-	$(if $(CONFIG_LFS),-D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64) \
 	-DBB_VER=$(squote)$(quote)$(BB_VER)$(quote)$(squote)
 
 CFLAGS += $(call cc-option,-Wall,)
@@ -87,14 +86,14 @@ endif
 #CFLAGS += $(call cc-option,-Wconversion,)
 
 ifneq ($(CONFIG_DEBUG),y)
-CFLAGS += $(call cc-option,-O2,)
+CFLAGS += $(call cc-option,-Os,)
 else
 CFLAGS += $(call cc-option,-g,)
 #CFLAGS += "-D_FORTIFY_SOURCE=2"
 ifeq ($(CONFIG_DEBUG_PESSIMIZE),y)
 CFLAGS += $(call cc-option,-O0,)
 else
-CFLAGS += $(call cc-option,-O2,)
+CFLAGS += $(call cc-option,-Os,)
 endif
 endif
 ifeq ($(CONFIG_DEBUG_SANITIZE),y)
